@@ -1,0 +1,7 @@
+# Archivos de Compilación de Python
+__pycache__/
+*.pyc
+
+# Archivos y Directorios de Pytest
+.pytest_cache/
+.pytest_log

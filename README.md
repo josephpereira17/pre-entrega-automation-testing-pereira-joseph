@@ -10,8 +10,6 @@ Este proyecto contiene un *test* automatizado para validar la funcionalidad de i
 
 Asegúrate de tener instalado **Python 3.x**.
 
-También necesitarás el *driver* de tu navegador (ej. `chromedriver.exe` para Chrome).
-
 ### 2. Instalación de Dependencias
 
 Todas las librerías necesarias para ejecutar los *tests* se encuentran especificadas en el archivo `requirements.txt`. Para instalarlas, usa el siguiente comando en tu terminal:
@@ -44,8 +42,11 @@ python -m pytest tests/login-test.py -v -s
 ## 📁 Estructura del Proyecto
 ```
 .
+├── pages/
+│   └── base_page.py    # Clase Base: Contiene la lógica del WebDriver, esperas y métodos comunes.
 ├── tests/
-│   └── login-test.py   # Script principal con la prueba de login
-├── README.md           # Este archivo de documentación
-└── requirements.txt    # Lista de dependencias de Python
+│   └── login-test.py   # Script de Prueba: Contiene la fixture del driver y el caso de prueba.
+├── .gitignore          # Archivo para ignorar compilaciones de Python y logs.
+├── README.md           # Documentación del proyecto.
+└── requirements.txt    # Lista de dependencias de Python.
 ```
