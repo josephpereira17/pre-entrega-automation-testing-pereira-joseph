@@ -1,7 +1,7 @@
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from pages.base_page import BasePage
+from pages.login_page import LoginPage
 
 @pytest.fixture(scope="function")
 def driver_setup():
@@ -13,19 +13,10 @@ def driver_setup():
 
 def test_login(driver_setup):
     driver = driver_setup
-    base_page = BasePage(driver)
-    base_page.go_to_url("https://www.saucedemo.com/")
+    login_page = LoginPage(driver)
+    login_page.login("standard_user","secret_sauce")
 
-    # Localizar elementos
-    usuarioTxt = base_page._find_element(By.ID,"user-name")
-    claveTxt = base_page._find_element(By.ID,"password")
-    loginBtn = base_page._find_element(By.ID,"login-button")
-
-    usuarioTxt.send_keys("standard_user")
-    claveTxt.send_keys("secret_sauce")
-    loginBtn.click()
-
-    titulo_productos = base_page._get_element_text(By.XPATH, "//span[text()='Products']")
+    titulo_productos = login_page._get_element_text(By.XPATH, "//span[text()='Products']")
         
     assert titulo_productos == "Products", "El título de la página no es 'Products'. Login fallido."
     print("Login exitoso - La validación de título correcta")
